@@ -1,0 +1,7 @@
+INDEX VERSION 1.4+C:\Users\aluno.unilasalle\Desktop\WS\.metadata\.plugins\org.eclipse.wst.jsdt.core\indexes
+3825904534.index
+3513066635.index
+1442146892.index
+840940667.index
+3826329895.index
+958652570.index
