@@ -1,0 +1,202 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:h="http://xmlns.jcp.org/jsf/html"
+	xmlns:f="http://xmlns.jcp.org/jsf/core"
+	xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+	xmlns:p="http://primefaces.org/ui"
+	xmlns:c="http://xmlns.jcp.org/jsp/jstl/core" 
+	template="/template/template.xhtml">
+
+	<ui:define name="cabecalho">
+		<ui:include src="/includes/cabecalho.xhtml" />
+	</ui:define>
+	
+	<ui:define name="menu">
+		<ui:include src="/includes/menu.xhtml" />
+	</ui:define>
+	
+	<ui:define name="conteudo">
+		<h:form id="fTabela">
+		    <p:dataTable id="dtArmazem" var="f" value="#{armazemBean.armazems}" rows="10"
+                      paginator="true" emptyMessage="Nehum Registro Encontrado"
+                      paginatorTemplate="{CurrentPageReport} {FirstPageLink} 
+                      	{PreviousPageLink} {PageLinks} {NextPageLink} 
+                      	{LastPageLink} {RowsPerPageDropdown}"
+                      rowsPerPageTemplate="5,10,15">
+		        
+		        <f:facet name="header">Listagem de Armazems</f:facet>
+		        
+		        <p:column headerText="Id">
+		            <h:outputText value="#{f.id}" />
+		        </p:column>
+		 
+		        <p:column headerText="Nome">
+		            <h:outputText value="#{f.nome}" />
+		        </p:column>
+		 
+		        <p:column headerText="Endereco">
+		            <h:outputText value="#{f.endereco}" />
+		        </p:column>
+		 
+		        <p:column headerText="Telefone">
+		            <h:outputText value="#{f.tel}" />
+		        </p:column>
+		        
+		        <p:column headerText="Dt. Cadastro">
+		            <h:outputText value="#{f.dtCadastro}" />
+		        </p:column>
+		    
+		    	<p:column headerText=".....">
+		         
+		            <p:commandButton icon="ui-icon-pencil" oncomplete="PF('dlgEditarArmazem').show();"
+		            	actionListener="#{armazemBean.prepararEditar}"
+		            	update=":fEditar:pgEditar" />
+		            
+		            <p:commandButton icon="ui-icon-trash" oncomplete="PF('dlgExcluirArmazem').show();"
+		            	actionListener="#{armazemBean.prepararExcluir}"
+		            	update=":fExcluir:pgExcluir" />
+		            
+		        </p:column>
+		        
+		    	<f:facet name="footer">
+		    		<p:commandButton value="NovaArmazem" oncomplete="PF('dlgNovaArmazem').show();"
+		    			actionListener="#{armazemBean.prepararNovo}" update=":fCadastrar:pgCadastrar"/>
+		    	
+		    	</f:facet>
+		    
+		    </p:dataTable>
+		    
+		</h:form>
+	
+		<p:dialog header="Nova Armazem" widgetVar="dlgNovaArmazem" 
+			height="180" width="400" modal="true" appendTo="@(body)" 
+			draggable="false" resizable="false" closable="false">
+		
+			<h:form id="fCadastrar">
+			
+				<p:panelGrid id="pgCadastrar" columns="2">
+			
+					<p:outputLabel value="Nome:" />
+					<p:inputText value="#{armazemBean.armazem.nome}" />
+					
+					<p:outputLabel value="Endereco:" />
+					<p:inputText value="#{armazemBean.armazem.endereco}" />
+					
+					<p:outputLabel value="Telefone:" />
+					<p:inputText value="#{armazemBean.armazem.tel}" />
+					
+				</p:panelGrid>
+		
+		
+
+				<p:panelGrid columns="2">
+					
+					
+					
+					<p:commandButton value="Cadastrar" 
+						actionListener="#{armazemBean.cadastrarArmazem}" 
+						oncomplete="PF('dlgNovaArmazem').hide();" 
+						update=":fTabela:dtArmazem" />
+						
+					<p:commandButton value="Cancelar" 
+						oncomplete="PF('dlgNovaArmazem').hide();" />
+				
+				</p:panelGrid> 
+			
+			</h:form>
+		
+		</p:dialog>
+	
+		
+		<p:dialog header="Editar Armazem" widgetVar="dlgEditarArmazem" height="180" width="400" 
+			modal="true" appendTo="@(body)" draggable="false" resizable="false" closable="false">
+		
+			<h:form id="fEditar">
+			
+				<p:panelGrid id="pgEditar" columns="2">
+				
+					<p:outputLabel value="ID:" />
+					<p:outputLabel value="#{armazemBean.armazem.id}" />
+					
+					<p:outputLabel value="Nome:" />
+					<p:inputText value="#{armazemBean.armazem.nome}" />
+					
+					<p:outputLabel value="Endereco:" />
+					<p:inputText value="#{armazemBean.armazem.endereco}" />
+					
+					<p:outputLabel value="Tel:" />
+					<p:inputText value="#{armazemBean.armazem.tel}" />
+				
+					<p:outputLabel value="Dt, Cadastro:" />
+					<p:outputLabel value="#{armazemBean.armazem.dtCadastro}" />
+				
+				</p:panelGrid>
+		
+		
+
+				<p:panelGrid columns="2">
+					
+					
+					
+					<p:commandButton value="Editar" 
+						actionListener="#{armazemBean.editarArmazem}" 
+						oncomplete="PF('dlgEditarArmazem').hide();" 
+						update=":fTabela:dtArmazem" />
+						
+					<p:commandButton value="Cancelar" 
+						oncomplete="PF('dlgEditarArmazem').hide();" />
+				
+				</p:panelGrid> 
+			
+			</h:form>
+		
+		</p:dialog>
+	
+	<p:dialog header="Excluir Armazem" widgetVar="dlgExcluirArmazem" height="180" width="400" 
+			modal="true" appendTo="@(body)" draggable="false" resizable="false" closable="false">
+		
+			<h:form id="fExcluir">
+			
+				<p:panelGrid id="pgExcluir" columns="2">
+				
+					<p:outputLabel value="ID:" />
+					<p:outputLabel value="#{armazemBean.armazem.id}" />
+					
+					<p:outputLabel value="Nome:" />
+					<p:outputLabel value="#{armazemBean.armazem.nome}" />
+					
+				</p:panelGrid>
+		
+		
+
+				<p:panelGrid columns="2">
+					
+					
+					
+					<p:commandButton value="Excluir" 
+						actionListener="#{armazemBean.excluirArmazem}" 
+						oncomplete="PF('dlgExcluirArmazem').hide();" 
+						update=":fTabela:dtArmazem" />
+						
+					<p:commandButton value="Cancelar" 
+						oncomplete="PF('dlgExcluirArmazem').hide();" />
+				
+				</p:panelGrid> 
+			
+			</h:form>
+		
+		</p:dialog>
+	
+	</ui:define>	
+	
+	<ui:define name="rodape">
+		<ui:include src="/includes/rodape.xhtml" />
+	</ui:define>
+	
+</ui:composition>
+		    
+		    
+		  

@@ -25,6 +25,25 @@
 			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
 		</attributes>
 	</classpathentry>
-	<classpathentry kind="lib" path="C:/Users/aluno.unilasalle/Desktop/WS/javax.faces-api-2.2.jar"/>
+	<classpathentry kind="lib" path="C:/Users/Quaresma/Desktop/Faculdade/sistemaEstoque/javax.faces-api-2.2.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="bin/catalina-ant.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.dependency" value="/WEB-INF/lib"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Quaresma/Desktop/Faculdade/sistemaEstoque/jsf-api.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="C:/Users/Quaresma/Desktop/Faculdade/sistemaEstoque/jsf-impl.jar">
+		<attributes>
+			<attribute name="org.eclipse.jst.component.nondependency" value=""/>
+		</attributes>
+	</classpathentry>
 	<classpathentry kind="output" path="build/classes"/>
 </classpath>

@@ -1,4 +1,4 @@
-<?xml version="1.0"?>
+<!DOCTYPE something>
 <!--
  Licensed to the Apache Software Foundation (ASF) under one or more
   contributor license agreements.  See the NOTICE file distributed with
@@ -25,15 +25,24 @@
   <!-- set catalina.home if it's not already set -->
   <dirname property="catalina.home.bin.dir" file="${ant.file.catalina-tasks}"/>
   <property name="catalina.home" value="${catalina.home.bin.dir}/.."/>
-  <typedef resource="org/apache/catalina/ant/catalina.tasks">
+  <typedef resource="org/apache/catalina/catalina.tasks">
     <classpath>
       <fileset file="${catalina.home}/bin/tomcat-juli.jar"/>
-      <fileset dir="${catalina.home}/lib" includes="*.jar"/>
+      <fileset file="${catalina.home}/bin/tomcat-api.jar"/>
+      <fileset file="${catalina.home}/bin/tomcat-util.jar"/>
+      <fileset file="${catalina.home}/bin/jasper.jar"/>
+      <fileset file="${catalina.home}/bin/jasper-el.jar"/>
+      <fileset file="${catalina.home}/bin/el-api.jar"/>
+      <fileset file="${catalina.home}/bin/jsp-api.jar"/>
+      <fileset file="${catalina.home}/bin/servlet-api.jar"/>
+      <fileset file="${catalina.home}/bin/catalina-ant.jar"/>
+      <fileset file="${catalina.home}/bin/tomcat-coyote.jar"/>
     </classpath>
   </typedef>
   <typedef resource="org/apache/catalina/ant/jmx/jmxaccessor.tasks">
     <classpath>
-      <fileset file="${catalina.home}/lib/catalina-ant.jar"/>
+      <fileset file="${catalina.home}/bin/catalina-ant.jar"/>
     </classpath>
   </typedef>
 </project>
+

@@ -1,0 +1,48 @@
+.ui-widget, .ui-widget, .ui-widget {
+	font-size: 90% !important;
+	
+}
+
+.menu{
+	background-color: green;
+	
+	
+}
+
+
+/*=========RODAPE============*/
+
+.copyright{
+	float: left !important;
+	margin-top: 0px !important;
+	height: 35 !important;
+	border: none !important;
+	padding-top: 0px !important;
+	
+}
+
+.copyrightLabel{
+	border: none !important;
+	margin-top: 0px !important;
+	color: green !important;
+	top: 1px !important;
+}
+
+.relogio{
+	float: right !important;
+	margin-top: 0px !important;
+	top: 1px !important;
+	height: 35 !important;
+	border: none !important;
+	padding-top: 0px !important;
+	
+}
+.ui-clock {
+	background: none !important;
+	border: none !important;
+	margin-top: 0px !important;
+	top: 1px !important;
+	color: green !important;
+}
+
+/*=========FIM DO RODAPE============*/
